@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução ao JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Introdução ao JavaScript</h1>
+        
+        <section>
+            <h2>JavaScript é uma linguagem orientada a objetos</h2>
+            <p>Ou seja, os próprios tipos definem métodos para trabalhar com valores, por exemplo:</p>
+            <pre><code>let pessoa = {
+    nome: "joão",
+    idade: 30,
+    falar : function() {
+        console.log("Olá meu nome é " + this.nome);
+    }
+};</code></pre>
+            <p>Para então chamar o método do objeto usariamos:</p>
+            <pre><code>pessoa.falar();</code></pre>
+            <p>Apenas os objetos possuem métodos, mas números, strings e booleanos se comportam como se tivessem métodos. Em null e undefined métodos não podem ser chamados.</p>
+        </section>
+
+        <section>
+            <h2>Tipos, Valores e Variáveis</h2>
+            <p>Cada linguagem possui os tipos de valores que aceita. variável define nome "simbólico" para um valor que o programa precisa manter, permitindo que o valor seja referido pelo nome.</p>
+            <h3>Valores especiais:</h3>
+            <ul>
+                <li>null e undefined: valores primitivos</li>
+            </ul>
+            <h3>Tipos de JavaScript:</h3>
+            <ul>
+                <li><strong>Tipos Primitivos:</strong> incluem números, sequências de texto (strings) e booleanos.</li>
+                <li><strong>Tipos de objeto:</strong> todos os valores que não são os anteriores</li>
+                <li><strong>Mutáveis:</strong> Podem ser alterados os valores de propriedades, Objetos e Arrays</li>
+                <li><strong>Imutáveis:</strong> Não podem ser alterados os valores de propriedades, números, booleanos, null, undefined e strings</li>
+            </ul>
+            <h3>Objeto no JavaScript:</h3>
+            <p>Um membro do tipo objeto é um conjunto de propriedades, sendo que, cada propriedade possui um nome e valor. Um objeto normal é um conjunto não ordenado de valores nomeados.</p>
+            <ul>
+                <li><strong>Array:</strong> tipo especial de objeto representado por um conjunto ordenado de valores numerados</li>
+            </ul>
+            <h3>Função:</h3>
+            <ul>
+                <li>objeto com código executável associado, pode ser chamada e retornar um valor calculado. São valores reais e podem ser tratadas como objetos normais</li>
+                <li><strong>Funções Construtoras:</strong> inicializam um objeto criado recentemente, define uma classe de objetos própria (conjunto de objetos que ela inicializa)</li>
+                <li><strong>Classes (subtipos do tipo de objeto):</strong> Array, Function, Date (objetos que representam datas), RegExp (objetos que representam expressões regulares) e Error (objetos que representam erros de sintaxe e/ou execução)</li>
+            </ul>
+            <h3>Coleta Automática de Lixo:</h3>
+            <p>Interpretador JavaScript realiza a coleta automática de lixo para gerenciamento de memória, liberando espaço de memória ocupado por um objeto quando sabe que ele não será mais acessado.</p>
+            <h3>Transformação automática de tipos:</h3>
+            <p>JavaScript converte tipos livremente, de acordo com o tipo esperado. O operador de igualdade (==) realiza as conversões de acordo. Isso é possível pois as Variáveis não são tipadas, podendo atribuir valores de qualquer tipo várias vezes para a mesma variável. As variáveis são declaradas com a palavra-chave var.</p>
+            <h3>Escopo léxico:</h3>
+            <p>O JavaScript utiliza o escopo léxico, ou seja, as variáveis declaradas fora de uma função são variáveis globais visíveis para todo o programa JavaScript, já as que são declaradas dentro de uma função só são visíveis para o código da função.</p>
+        </section>
+
+        <section>
+            <h2>Números</h2>
+            <p>JavaScript não faz distinção entre inteiros e ponto flutuante, todos são representados como ponto flutuante, e no formato de 64bits.</p>
+            <ul>
+                <li><strong>Literals inteiros:</strong> Um inteiro de base 10 é escrito como sequência de dígitos, podem ser escritos em hexadecimal (base 16) também. Ex: 0, 3, 10, 10000000</li>
+                <li><strong>Literals em Ponto flutuante:</strong> Um valor real é representado como a parte inteira do número, seguida de um ponto decimal e a parte fracionária do número. Ex: 3.14, 2345.789, 6.02e23</li>
+                <li><strong>Aritmética em JavaScript:</strong> Utiliza os operadores matemáticos padrões, soma (+), subtração (-), multiplicação (*), divisão (/) e módulo (%). Também pode utilizar funções matemáticas e constantes definidas como propriedades do objeto Math. Ex: Math.round(.6) => 1.0, Math.abs(-5) => 5</li>
+                <li><strong>Estouro:</strong> Quando o resultado da operação é maior do que o maior número representável, chamado estouro, JavaScript indica como <code>*Infinity*</code>, valor infinito especial. Da mesma forma se resultado da operação é menor do que o menor número representável, JavaScript indica como <code>*-Infinity*</code>. Ao realizar operações aritméticas padrões com números infinitos o resultado é um valor infinito, positivo ou negativo.</li>
+                <li><strong>Estouro Negativo:</strong> Ocorre quando resultado da operação aritmética é mais próximo de 0 do que o menor número representável, JavaScript indica 0. Podendo também indicar "zero negativo", caso o estouro aconteça de um número negativo.</li>
+                <li><strong>Divisão Por Zero:</strong> Não resulta em erro, no JavaScript, resultando em infinito ou infinito negativo. Há uma exceção, zero dividido por zero (0/0) resulta em NaN (Not a Number ou Não é um Número).</li>
+                <li><strong>Not a Number (NaN):</strong> Ocorre quando se usa operadores aritméticos com operandos não numéricos e que não se pode converter em número. Outros casos que aparecem: infinito/infinito e raiz quadrada de um número negativo. Possui uma característica peculiar, não pode ser comparado (==) com qualquer outro valor. Para se determinar se o valor da variável é NaN, deve-se utilizar <code>x != x</code> ou a função <code>isNaN()</code>. O oposto seria a função <code>isFinite()</code> também usada para avaliar se a variável é Infinity ou -Infinity.</li>
+                <li><strong>Zero:</strong> Pode ser comparado normalmente, inclusive com zero negativo. Exceto quando usado como divisor. Ex: 1/0 === 1/-0 => false</li>
+                <li><strong>Ponto flutuante binário e erros de arredondamento:</strong> Devido à representação de ponto flutuante usada no JavaScript (IEEE-754), pode-se ocorrer erros de arredondamento, especialmente com frações comuns como 1/10, 1/100, etc. Um contorno para essa situação é utilizar, por exemplo, valores monetários como centavos inteiros. Ex: <code>var x = .3 - .2;</code> <code>var y = .2 - .1;</code> <code>x == y => falso</code> <code>x == .1 => falso</code> <code>y == .1 => verdadeiro</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Datas e Horas</h2>
+            <p>Existe uma construtora Date() para criar objetos que representam datas e horas. Ex:</p>
+            <pre><code>var now = new Date(); // data e hora atuais
+now.toString(); // escreve a data e hora completas como uma string</code></pre>
+        </section>
+
+        <section>
+            <h2>Texto</h2>
+            <p>Nada mais é que uma sequência ordenada imutável de 16bits, em que cada um, representa um caractere Unicode. Usado para representar texto, o seu comprimento é a quantidade de valores 16bits que contém. Utiliza indexação com base em zero, ou seja, o index do primeiro valor é 0, o segundo é 1, etc.</p>
+            <ul>
+                <li><strong>Strings Literais:</strong> Para incluir uma string literalmente em um programa JavaScript, basta colocá-la entre aspas simples ou duplas (' ou "). Aspas duplas podem estar dentro de strings delimitadas por aspas simples e vice-versa. É recomendável usar um tipo de aspas para JavaScript e outro para HTML no desenvolvimento Web. É possível dividir uma string literal em várias linhas usando uma barra invertida (\) no final de cada linha (exceto na última). Nem a barra invertida nem a terminação de linha fazem parte da string literal. Para incluir um caractere de nova linha em uma string literal, utilize a sequência \n:</li>
+                <ul>
+                    <li><code>"two\nlines"</code> - Uma string que representa duas linhas escritas em uma única linha</li>
+                    <li><code>"one\ long\ line"</code> - String de uma linha escrita em três linhas (somente ECMAScript 5)</li>
+                </ul>
+                <li><strong>Sequências de Escape em Strings Literais:</strong> A barra invertida (\) combinada com o caractere que vem a seguir representam caracteres que não podem ser representados de outra forma dentro da string. Ex: \n (caractere de nova linha), \' (caractere de aspas), /f (caractere de avanço de página), etc. Caso, a barra invertida seja precedida de algum caractere que juntos não representam nada a barra é ignorada.</li>
+                <li><strong>Trabalhando com Strings:</strong> É possível concatenar strings, utilizando o operador mais (+). Lembrando que métodos como <code>replace()</code> e <code>toUpperCase()</code> retornam novas strings, pois as strings são imutáveis. São tratadas como arrays para leitura, permitindo a leitura de caracteres individuais através dos colchetes. Exemplos de métodos que podem ser chamados em strings:
+                    <ul>
+                        <li><code>s.length()</code> (comprimento da string)</li>
+                        <li><code>s.slice(-3)</code> (retorna os 3 últimos caracteres)</li>
+                        <li><code>s[0]</code> (retorna o 1º caractere)</li>
+                    </ul>
+                </li>
+                <li><strong>Comparação de Padrões:</strong> JavaScript define a construtora RegExp() para criar objetos que representam padrões textuais usando expressões regulares. JavaScript adota a sintaxe de Perl para expressões regulares. Tanto strings quanto objetos RegExp têm métodos para comparação de padrões e operações de busca e troca usando essas expressões. Embora não sejam tipos fundamentais, os objetos RegExp possuem uma sintaxe literal que pode ser codificada diretamente em JavaScript. Uma expressão regular literal é definida entre um par de barras normais, e letras após a segunda barra podem modificar o significado do padrão.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Booleanos</h2>
+            <p>Representa verdadeiro (true) ou falso (false). Usados normalmente em estruturas de controle como if/else. Os valores que quando convertidos para booleanos retornam falso são undefined, null, 0, -0, NaN e "". Todos os outros retornam verdadeiro. Os valores booleanos possuem o método <code>toString()</code> para convertê-los em string, também possuem três operadores úteis, o <code>&&</code> (executa a operação E), <code>||</code> (executa a operação OU) e <code>!</code> (executa a operação NÃO).</p>
+        </section>
+
+        <section>
+            <h2>null e undefined</h2>
+            <p><strong>null</strong> representa a ausência de um valor, ou nenhum objeto.</p>
+            <p><strong>undefined</strong> é uma variável global predefinida inicializada com o valor indefinido, representa uma ausência de valor mais profunda. Aparece quando se consulta o valor de variáveis não inicializadas ou uma propriedade de objeto ou array que não existe. O operador de igualdade os considera iguais, e ambos não possuem métodos ou propriedades.</p>
+        </section>
+
+        <section>
+            <h2>Objeto Global</h2>
+            <p>É um objeto normal no qual suas propriedades são os símbolos definidos globalmente que estão disponíveis para um programa JavaScript, estão nele as propriedades globais, funções globais, funções construtoras e objetos globais. Em JavaScript no lado do cliente, o objeto Window serve como objeto global para o código contido na janela do navegador que representa, que tem uma propriedade de autoreferência window. Quando se declara uma variável global, essa variável é uma propriedade do objeto global.</p>
+        </section>
+
+        <section>
+            <h2>Objeto Wrapper</h2>
+            <p>Os objetos JavaScript são valores compostos formados por um conjunto de propriedades ou valores nomeados. Podemos acessar o valor de uma propriedade usando a notação de ponto (.). Quando uma propriedade é uma função, ela é chamada de método. Apesar das strings não serem objetos, elas possuem propriedades e métodos. JavaScript converte automaticamente a string em um objeto temporário usando <code>new String(s)</code> para permitir o acesso às propriedades. Esse objeto herda métodos das strings, e uma vez que a propriedade é resolvida, o objeto temporário é descartado. Assim como strings, números e valores booleanos também têm métodos devido à criação de objetos temporários usando <code>Number()</code> ou <code>Boolean()</code>. Exemplo de Comportamento:</p>
+            <pre><code>var s = "test";
+s.len = 4; 
+var t = s.len; // => undefined</code></pre>
+        </section>
+
+        <section>
+            <h2>Valores Primitivos Imutáveis e Referências de Objeto Mutáveis</h2>
+            <p>Valores primitivos são imutáveis e são comparados por valor. No caso de strings são consideradas iguais se tiverem o mesmo comprimento e o caractere em cada índice for o mesmo. Objetos, por outro lado, são mutáveis e não são comparados por valor, de modo, que dois objetos não são iguais mesmo que tenham as mesmas propriedades e valores, o mesmo para os arrays. Atribuir um objeto (ou array) a uma variável simplesmente atribui a referência, não cria uma nova cópia do objeto. Para realizar uma cópia é necessário, copiar explicitamente as propriedades do objeto ou array, usando por exemplo um laço for. Exemplo de código para comparação de arrays:</p>
+            <pre><code>function equalArrays(a, b) {
+    if (a.length != b.length) return false; 
+    for(var i = 0; i < a.length; i++) 
+        if (a[i] !== b[i]) return false;
+    return true;
+}</code></pre>
+        </section>
+    </div>
+</body>
+</html>

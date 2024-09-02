@@ -1,0 +1,171 @@
+JavaScript é uma linguagem orientada a objetos
+Ou seja, os próprios tipos definem métodos para trabalhar com valores, por exemplo:
+
+    let pessoa = {
+        nome: "joão",
+        idade: 30,
+        falar : function() {
+            console.log("Olá meu nome é " + this.nome);
+        }
+    };
+
+Para então chamar o método do objeto usariamos:
+
+    pessoa.falar(); 
+
+Apenas os objetos possuem métodos, mas números, strings e booleanos se comportam como se tivessem métodos. Em null e undefined métodos não podem ser chamados
+
+Tipos, Valores e Variáveis
+
+Cada linguagem possui os tipos de valores que aceita.
+variável define nome "simbólico" para um valor que o programa precisa manter, permitindo que o valor seja referido pelo nome
+
+Valores especiais:
+ - null e undefined:
+    valores primitivos
+
+Tipos de JavaScript:
+ - Tipos Primitivos:
+    incluem números, sequências de texto (strings) e booleanos.
+
+ - Tipos de objeto:
+    todos os valores que não são os anteriores
+ 
+ - Mutáveis:
+    Podem ser alterados os valores de propriedades, Objetos e Arrays
+
+ - Imutáveis:
+    Não podem ser alterados os valores de propriedades, números, booleanos, null, undefined e strings
+
+Objeto no JavaScript:
+    Um membro do tipo objeto é um conjunto de propriedades, sendo que, cada propriedade possui um nome e valor. Um objeto normal é um conjunto não ordenado de valores nomeados.
+    - Array:
+        tipo especial de objeto representado por um conjunto ordenado de valores numerados
+
+Função:
+ - objeto com código executável associado, pode ser chamada e retornar um valor calculado. São valores reais e podem ser tratadas como objetos normais
+ - Funções Construtoras:
+    inicializam um objeto criado recentemente, define uma classe de objetos própria (conjunto de objetos que ela inicializa)
+    - Classes (subtipos do tipo de objeto):
+        Array, Function, Date (objetos que representam datas), RegExp (objetos que representam expressões regulares) e Error (objetos que representam erros de sintaxe e/ou execução)
+
+Coleta Automática de Lixo:
+    Interpretador JavaScript realiza a coleta automática de lixo para gerenciamento de memória, liberando espaço de memória ocupado por um objeto quando sabe que ele não será mais acessado
+
+Tranformação automática de tipos
+    JavaScript converte tipos livremente, de acordo com o tipo esperado. Os operadores realizam as conversões de acordo.
+    Isso é possível pois as Variáveis não são tipadas, podendo atribuir valores de qualquer tipo várias vezes para a mesma variável.
+    As variáveis são declaradas com a palavra-chave var
+
+Escopo léxico
+    O JavaScript utiliza o escopo léxico, ou seja, as váriaveis declaradas fora de uma função são variáveis globais visiveis para todo o programa JavaScript, já as que são declaradas dentro de uma função só são visiveis para o código da função
+
+- Números 
+    JavaScript não faz distinção entre inteiros e ponto flutuante, todos são representados como ponto flutuante, e no formato de 64bits.
+    Também, quando um número aparece diretamente é chamado de literal númerico, podendo ser tornado negativo se precedido pelo sinal de subtração (-)
+
+    - Literais inteiros
+    Um inteiro de base 10 é escrito como sequência de dígitos, podem ser escritos em heaxadecimal (base 16) também
+    Ex: 0, 3, 10, 10000000
+
+    - Literais em Ponto flutuante
+    Um valor real é representado como a parte inteira do número, seguida de um ponto decimal e a parte fracionária do número
+    [dígitos][.dígitos][(E|e)[(+|-)]dígitos]
+    Ex: 3.14, 2345.789, 6.02e23
+
+    - Aritmética em JavaScript
+    Utiliza os operadores matemáticos padrões, soma (+), subtração (-), multiplicação (*), divisão (/) e módulo (%)
+    Também pode utilizar funções matemáticas e constantes definidas definidas como propriedades do objeto Math.    
+    Ex: Math.round(.6) => 1.0, Math.abs(-5) => 5
+        
+        - Estouro
+        Quando o resultado da operação é maior do que o maior número representável, chamado estouro, JavaScript indica como *Infinity*, valor infinito especial. Da mesma forma se resultado da operação é menor do que o menor número representável, JavaScript indica como *-Infinity*. Ao realizar operações aritméticas padrões com números infinitos o resultado é um valor infinito, positivo ou negativo.
+
+        - Estouro Negativo
+        Ocorre quando resultado da operação aritmética é mais próximo de 0 do que o menor número representável, JavaScript indica 0. Podendo também indicar "zero negativo", caso o estouro aconteça de um número negativo.
+
+        - Divisão Por Zero 
+        Não resulta em erro, no JavaScript, resultando em infinito ou infinito negativo. Há uma exceção, zero dividido por zero (0/0) resulta em NaN (Not a Number ou Não é um Número) 
+
+        - Not a Number (NaN)
+        Ocorre quando se usa operadores aritméticos com operandos não numéricos e que não se pode converter em número. Outros caso que aparece: inifinito/infinito e raiz quadrado de um número negativo
+        Possui uma característica peculiar, não pode ser comparado (==) com qualquer outro valor. Para se determinar se o valor da variável é Nan, deve-se utilizar x != x ou a função isNan(). O oposto seria a função isFinite() também usada para avaliar se a variável é Infinity ou -Infinity
+
+        - Zero
+        Pode ser comparado normalmente, inclusive com zero negativo. Exceto quando usado como divisor.
+        Ex: 1/0 === 1/-0 => false
+    
+    - Ponto flutuante binário e erros de arredondamento
+    Devido a representação de ponto flutuante usada no JavaScript (IEEE-754), pode-se ocorrer erros de arredondamento, especialmente com frações comuns como 1/10, 1/100, etc. Um contorno para essa situação é utilizar, por exemplo, valores monetários como centavos inteiros. Ex:
+        var x = .3 - .2;
+        var y = .2 - .1;
+        x == y => falso
+        x == .1 => falso
+        y == .1 => verdadeiro
+
+    - Datas e Horas
+    Existe uma construtora Date() para criar objetos que representam datas e horas.
+    Ex:
+        var now = new Date() // data e hora atuais
+        now.toString() // escreve a data e hora completas como uma strings
+
+- Texto 
+    Nada mais é que uma sequência ordenada imutável de 16bits, em que cada um, representa um caracter Unicode. Usado para representar texto, o seu comprimento é quantidade de valores 16bits que contém. Utiliza indexação com base em zero, ou seja, o index do primeiro valor é 0, o segundo é 1, etc.
+
+    - Strings Literais
+    Para incluir uma string literalmente em um programa JavaScript, basta colocá-la entre aspas simples ou duplas (' ou "). Aspas duplas podem estar dentro de strings delimitadas por aspas simples e vice-versa. É recomendável usar um tipo de aspas para JavaScript e outro para HTML no desenvolvimento Web. É possível dividir uma string literal em várias linhas usando uma barra invertida (\) no final de cada linha (exceto na última). Nem a barra invertida nem a terminação de linha fazem parte da string literal. Para incluir um caractere de nova linha em uma string literal, utilize a sequência \n:
+
+    "two\nlines" - Uma string que representa duas linhas escritas em uma única linha
+    "one\ long\ line" - String de uma linha escrita em três linhas (somente ECMAScript 5)
+
+        - Sequencias de Escape em Strings Literais
+        A barra invertida (\) combinada com o caractere que vem a seguir representam caracteres que não podem ser representados de outra forma dentro da string. Ex: \n (caractere de nova linha), \' (caractere de aspas), /f (caractere de avanço de página), etc. Caso, a barra invertida seja precedida de algum caractere que juntos não representam nada a barra é ignorada.
+
+        - Trabalhando com Strings
+        É possível concatenar strings, utilizando o operador mais (+). Lembrando que métodos como replace() e toUpperCase() retornam novas strings, pois as strings são Imutáveis. São tratadas como arrays para leitura, permitindo a leitura de caracteres individuais através dos colchetes.
+        Exemplos de métodos que podem ser chamados em strings:
+            s.lenght() (comprimento da string)
+            s.slice(-3) (retorna os 3 últimos caracteres)
+            s[0] (retorna o 1 caractere)
+
+        - Comparação de Padrões 
+        JavaScript define a construtora RegExp() para criar objetos que representam padrões textuais usando expressões regulares. JavaScript adota a sintaxe de Perl para expressões regulares. Tanto strings quanto objetos RegExp têm métodos para comparação de padrões e operações de busca e troca usando essas expressões. Embora não sejam tipos fundamentais, os objetos RegExp possuem uma sintaxe literal que pode ser codificada diretamente em JavaScript. Uma expressão regular literal é definida entre um par de barras normais, e letras após a segunda barra podem modificar o significado do padrão.
+
+- Booleanos 
+    Representa verdadeiro (true) ou falso (false). Usados normalmente em estruturas de controle como if/else. Os valores que quando convertidos para booleanos retornam falso são undefined, null, 0, -0, Nan e "". Todos os outros retornam verdadeiro. 
+    Os valores booleanos possuem o método toString() para converte-los em string, também possuem três operadores úteis, o && (executa a operação E), || (executa a operação OU) e ! (executa a operação NÃO).
+
+- null e undefined
+    null representa a ausência de um valor, ou nenhum objeto.
+    undefined é uma variável global predefinida inicializada com o valor indefinido, representa uma ausência de valor mais profunda. Aparece quando se consulta o valor de variáveis não inicializadas ou uma propriedade de objeto ou array que não existe.
+    O operador de igualdade os considera iguais, e ambos não possuem métodos ou propriedades.
+
+- Objeto Global 
+    É um objeto normal no qual suas propriedades são os símbolos definidos globalmente que estão disponíveis para um programa JavaScript, estão nele as propriedades globais, funções globais, funções construtoras e objetos globais.
+    Em JavaScript no lado do cliente, o objeto Window serve como objeto global para o código contiddo na janela do navegador que representa, que tem uma propriedade de autoreferência window. Quando se declara uma variável global, essa variável é uma propriedade do objeto global.
+
+- Objeto Wrapper
+    Os objetos JavaScript são valores compostos formados por um conjunto de propriedades ou valores nomeados. Podemos acessar o valor de uma propriedade usando a notação de ponto (.). Quando uma propriedade é uma função, ela é chamada de método.
+    Apesar das strings não serem objetos, elas possuem propriedades e métodos. JavaScript converte automaticamente a string em um objeto temporário usando new String(s) para permitir o acesso às propriedades. Esse objeto herda métodos das strings, e uma vez que a propriedade é resolvida, o objeto temporário é descartado. Assim como strings, números e valores booleanos também têm métodos devido à criação de objetos temporários usando Number() ou Boolean().
+    Exemplo de Comportamento:
+        var s = "test";
+        s.len = 4; 
+        var t = s.len; => undefined
+
+- Valores Primitivos Imutáveis e referências de objeto Mutáveis
+    Valores primitivos são imutáveis e são comparados por valor. No caso de strings são consideradas iguais se tiverem o mesmo comprimento e o caractere em cada índice for o mesmo.
+    Objetos, por outro lado, são mutáveis e não são comparados por valor, de modo, que dois objetos não são iguais mesmo que tenham as mesmas propriedades e valores, o mesmo para os arrays. 
+    Atribuir um objeto (ou array) a uma variável simplesmente atribui a referência, não cria uma nova cópia do objeto. Para realizar uma cópia é necessário, copiar explicitamente as propriedades do objeto ou array, usando por exemplo um laço for.
+    Exemplo de código para comparação de arrays:
+        function equalArrays(a,b) {
+            if (a.length != b.length) return false; 
+            for(var i = 0; i < a.length; i++) 
+            if (a[i] !== b[i]) return false;
+            return true;
+        }
+
+- Conversões de Tipo
+    Como já falado anteriormente as variáveis em JavaScript não são tipadas podendo ser alteradas livremente, as exceção é null e undefined, no caso, da tentativa de usar esses valores onde se espera um objeto retorna um TypeError.
+    
+    - Conversões e igualdade
+    
